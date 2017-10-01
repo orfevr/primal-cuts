@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.carcass-container{
+  margin: 10px auto;
+  width: 640px;
+  height: 480px;
+  border: 2px solid #222;
+  border-radius: 10px;
+}
+
+.cursor-axe {
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAK8SURBVFhHvZc5aBVBGMdjolG88lIoeETxCCQSSISAGixeYyEWooIoiKiIolWSQlCLEMFGMEUKz1goCJ4geKKghRpBUKOIoiDeJN6NoqISf/8wI8NkXXb3vd0PfuzM7He9mdlv5pWUFC6LcPEU9hXuKrqHUlTXm8BveHbAV5gZ3UV8zfGYLIAd8BxeQSuMMK4u8zwe322wxViGm6AFTsBj+Ahv4TpsgmGe6Wz6f2BykiTKMVoGh+AmvIR3cAcOwlqoCwjqx7rBwLEkCczAqB+OwmvogtExHGkZtoOWZk8Mu3+qw2n1wRQzvbdiOFltZuwnz54YdoNUzzByALT+v0GzEiZTeXkFtFQbYRzoS8gnTUI7XA4kFyBsR1fw/j1o0ylhK6oFcWZvUK5aw80wAbQnGgJ+jWrAfbgE+hRViKxMCrGLNDHL0fphNFVclJAvFxl4ZAbbnLbVO0njfKRo/1F6wLjdyapyex09tT9BpRnT8xfkHZ0aMwvTkyZRaxzM4znRtFfwVPHRslR7jvfT7/bGrtI/kjQB2anE6ksYA3NAm03B5wc4tete77yba2z0ZSQWFaUXsNAkszLE0ynenfPe36OvfVSQqKzql+tMCBO7bNMcJSWuDT2qoAww1nRGkWsoHfYUn9HfFsW4GDratNor7rqvov8FhhYjQBQfPSjtdhSH0FbF3BDFuBg6qorfvXVvpq96kpmoem51oumo1hmzNKsMdDx/hjIn4E7atnynnocOqw+gS6uVHA2/ZKeaiCqpblauBJXs1JLQun+DJU4EW7L1uWYiWveHXqRO+rphZyL6H6FZmOVEG0lb5VkbNXVRsF5o9CKto687RS7tDHRv1IW1wQukA0s3aN3AUxXdlpRAlRdF/x/uphrZONcM6FJzFtphDeThCWzJIgHFWAy74DTcBv350fprgw7IXxHUh8qjYJvkAAAAAElFTkSuQmCC), auto
+}
