@@ -9,17 +9,16 @@ export default class Cut extends Component {
     }
     
     render(){
-        //<circle cx="420.9" cy="296.5" r="45.7" onClick={(e)=>{console.log(e)}}/>
         const text = this.props.placeholders && this.props.placeholders.description ?
-            <text x={this.props.placeholders.description.x} y={this.props.placeholders.description.y} transform="translate(0.000000,413.000000) scale(1,-1)" fill="black" fontSize="152" strokeWidth="0">{this.props.title}</text> :
+            <text x={this.props.placeholders.description.x} y={this.props.placeholders.description.y} transform="translate(0.000000,413.000000) scale(1,-1)" fill={this.props.textColor} fontSize="152" strokeWidth="0">{this.props.title}</text> :
             '';
         const price = this.props.placeholders && this.props.placeholders.price ?
-            <text x={this.props.placeholders.price.x} y={this.props.placeholders.price.y} transform="translate(0.000000,413.000000) scale(1,-1)" fill="black" fontSize="152" strokeWidth="0">{this.props.price}</text> :
+            <text x={this.props.placeholders.price.x} y={this.props.placeholders.price.y} transform="translate(0.000000,413.000000) scale(1,-1)" fill={this.props.textColor} fontSize="152" strokeWidth="0">{this.props.price}</text> :
             '';
         
         return (
             <g fill={ this.props.fill || '#61DAFB'} 
-                stroke="#4c535b" 
+                stroke={this.props.strokeColor} 
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeDasharray="50"
@@ -30,9 +29,17 @@ export default class Cut extends Component {
                     }}
                 onMouseEnter={()=>{ 
                     if(!this.props.disabled){
+                        this.props.onHover({name:this.props.title});
                         this.setState({isActive:true})}
                         }}
-                onMouseLeave={()=>{this.setState({isActive:false})}}>
+                onMouseLeave={()=>{
+                    if (!this.props.disabled) {
+                        this.props.onHover(null);
+                        this.setState({ isActive: true })
+                    }
+
+                    this.setState({ isActive: false })
+                }}>
                 <path d={this.props.path} />
                 {text}
                 {price}
