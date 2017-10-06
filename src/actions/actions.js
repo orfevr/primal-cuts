@@ -9,6 +9,10 @@ export const THEME_ACTIONS = {
     SET_TEXT_COLOR: 'SET_TEXT_COLOR'
 }
 
+export const CUT_SHEET_ACTIONS = {
+    SELECT_SHEET_TYPE: 'SELECT_SHEET_TYPE'
+}
+
 
 export function setDefaultCutColor(color) {
     return {
@@ -48,5 +52,12 @@ export function setStrokeColor(color) {
     return {
         type: THEME_ACTIONS.SET_CUT_STROKE_COLOR,
         color
+    }
+}
+
+export function selectCutSheetType(cutSheetType){
+    return {
+        type: CUT_SHEET_ACTIONS.SELECT_SHEET_TYPE,
+        cutSheetType
     }
 }

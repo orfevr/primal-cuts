@@ -4,6 +4,7 @@ import Cut from './Cut'
 export default class CutSheet extends Component{
     constructor(){
         super();
+        
         const beefParts=[
             {
                 name:'head',
@@ -170,24 +171,45 @@ export default class CutSheet extends Component{
             }
             
         ];
+
         this.state={
-            parts: beefParts,
+            sheets: [
+                {
+                    type: 'beef',
+                    parts: beefParts
+                },
+                {
+                    type: 'pork',
+                    parts:[]
+                },
+                {
+                    type: 'lamb',
+                    parts: []
+                }
+            ],
             hoveredPart: null
         }
         this.handleHover = this.handleHover.bind(this);
     }
 
-    handleHover(cut){
-        this.setState({hoveredPart:Object.assign({},cut)});
+    handleHover(cut) {
+        this.setState({ hoveredPart: Object.assign({}, cut) });
     }
 
-    render(){
+    render() {
+        
+        const cutSheet = this.state.sheets.find((cutSheet) => {
+            return cutSheet.type === this.props.cutSheetType
+        });
+
+        const parts = (cutSheet && cutSheet.parts) || [];
+
         return (
             <div className="cut-sheet-container" style={{backgroundColor:this.props.theme.backgroundColor}}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
                     <g fill="#61DAFB" transform="translate(0.000000,413.000000) scale(0.100000,-0.100000)">
                         {
-                            this.state.parts.map((part, index)=>{
+                            parts.map((part, index)=>{
                                 let cutColor = this.props.theme.defaultCutColor;
                                 if (part.selected) {
                                     cutColor = this.props.theme.selectedCutColor;

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './App.css';
-import CutSheet from './CutSheet';
 import ThemeEditor from './containers/ThemeEditor'
+import CutSheetContainer from './containers/CutSheetContainer'
+import CutSheetSelectorContainer from './containers/CutSheetSelectorContainer'
 
 class App extends Component {
   
   render() {
     return (
       <div className="App">
-        <div className="carcass-container">
-          <CutSheet Title={"Beef"} theme={this.props.theme} />
-        </div>
+        <CutSheetSelectorContainer/>
+        <CutSheetContainer/>
         <ThemeEditor/>
       </div>
     );
