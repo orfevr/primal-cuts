@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import ThemeBuilder from '../ThemeBuilder'
+import ThemeBuilder from '../components/ThemeBuilder'
 import {
     setDefaultCutColor,
     setDisabledCutColor,

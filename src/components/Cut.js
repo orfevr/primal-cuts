@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class Cut extends Component {
     constructor(){
@@ -27,12 +28,13 @@ export default class Cut extends Component {
                     //this.setState({isActive:!this.state.isActive});
                     console.log('Selceted part: ' + this.props.title);
                     }}
-                onMouseEnter={()=>{ 
-                    if(!this.props.disabled){
-                        this.props.onHover({name:this.props.title});
-                        this.setState({isActive:true})}
-                        }}
-                onMouseLeave={()=>{
+                onMouseEnter={() => {
+                    if (!this.props.disabled) {
+                        this.props.onHover({ name: this.props.title });
+                        this.setState({ isActive: true })
+                    }
+                }}
+                onMouseLeave={() => {
                     if (!this.props.disabled) {
                         this.props.onHover(null);
                         this.setState({ isActive: true })
@@ -46,4 +48,12 @@ export default class Cut extends Component {
             </g>
         )
     }
+}
+
+Cut.propTypes = {
+    title: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+    disabled: PropTypes.bool,
+    strokeColor: PropTypes.string,
+    fill: PropTypes.string
 }

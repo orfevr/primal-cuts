@@ -6,7 +6,7 @@ class CutSheetSelector extends Component {
             <div>
                 {['beef', 'pork', 'lamb', 'chicken'].map((meatType, index) => {
                     return (
-                        <button className="tbd"
+                        <button key={meatType} className="tbd"
                             value={meatType}
                             onClick={(e) => this.props.onCutSheetSelected(e.target.value)}>{meatType}</button>
                     );

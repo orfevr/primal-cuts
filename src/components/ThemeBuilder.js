@@ -23,7 +23,7 @@ export default class ThemeBuilder extends Component {
                     <span>Sheet Background Color: </span>
                     {['black', 'white'].map((color, index) => {
                         return (
-                            <button className="color-picker" 
+                            <button key={index} className="color-picker" 
                                     style={{ background: color }} 
                                     value={color}
                                     onClick={(e)=>onBackgroundColorChange(e.target.value)}></button>
@@ -32,7 +32,7 @@ export default class ThemeBuilder extends Component {
                     <span>Text Color: </span>
                     {['black', 'white'].map((color, index) => {
                         return (
-                            <button className="color-picker" 
+                            <button key={index} className="color-picker" 
                                     style={{ background: color }} 
                                     value={color}
                                     onClick={(e)=>onTextColorChange(e.target.value)}></button>
@@ -43,7 +43,7 @@ export default class ThemeBuilder extends Component {
                     <span>Cut Color: </span>
                     {colors.map((color, index) => {
                         return (
-                            <button className="color-picker" 
+                            <button key={index} className="color-picker" 
                                     style={{ background: color }} 
                                     value={color}
                                     onClick={(e) => onDefaultCutColorChange(e.target.value)}></button>
@@ -54,7 +54,7 @@ export default class ThemeBuilder extends Component {
                     <span>Selected Cut Color: </span>
                     {colors.map((color, index) => {
                         return (
-                            <button className="color-picker" 
+                            <button key={index} className="color-picker" 
                                     style={{ background: color }} 
                                     value={color}
                                     onClick={(e)=>onSelectedCutColorChange(e.target.value)}></button>
@@ -65,7 +65,7 @@ export default class ThemeBuilder extends Component {
                     <span>Disabled Cut Color: </span>
                     {colors.map((color, index) => {
                         return (
-                            <button className="color-picker" 
+                            <button key={index} className="color-picker" 
                                     style={{ background: color }} 
                                     value={color}
                                     onClick={(e)=>onDisabledCutColorChange(e.target.value)}></button>
@@ -76,7 +76,7 @@ export default class ThemeBuilder extends Component {
                     <span>Stroke Cut Color: </span>
                     {colors.map((color, index) => {
                         return (
-                            <button className="color-picker" 
+                            <button key={index} className="color-picker" 
                                     style={{ background: color }} 
                                     value={color}
                                     onClick={(e)=>onStrokeColorChange(e.target.value)}></button>

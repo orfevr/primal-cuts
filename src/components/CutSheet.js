@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import Cut from './Cut'
 
 export default class CutSheet extends Component{
@@ -40,7 +41,6 @@ export default class CutSheet extends Component{
                 -8 27 -23 83 -35 124 -25 94 -78 271 -83 275 -1 2 -77 8 -168 14 -157 10 -319
                 12 -423 4z`,
                 colorKey: '#8bc34a',
-                price: '100$',
                 placeholders: {
                     price:{
                         x: 2800,
@@ -170,6 +170,21 @@ export default class CutSheet extends Component{
                 disabled: true
             }
             
+        ];
+
+        this.stubPartsData = [
+            {
+                name: 'rib',
+                userText: '100$'
+            },
+            {
+                name: 'rump',
+                disabled: true
+            },
+            {
+                name: 'hindshank',
+                userText: '25 $/pc'
+            }
         ];
 
         const lambParts = [
@@ -313,39 +328,69 @@ export default class CutSheet extends Component{
 
         const parts = (cutSheet && cutSheet.parts) || [];
 
+        //draft 
+        const partsData = this.props.partsData || this.stubPartsData;
+
+        var hoveredPartName, hoveredPartUserText;
+        
+        if (this.state.hoveredPart && this.state.hoveredPart.name) {
+            hoveredPartName = this.state.hoveredPart.name.toUpperCase();
+            let userData = partsData.find(p => { return p.name === this.state.hoveredPart.name; });
+            if (userData && userData.userText) {
+                hoveredPartUserText = userData.userText;
+            }
+        }
+
         return (
             <div className="cut-sheet-container" style={{backgroundColor:this.props.theme.backgroundColor}}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
                     <g fill="#61DAFB" transform="translate(0.000000,413.000000) scale(0.100000,-0.100000)">
                         {
                             parts.map((part, index)=>{
+                                
+                                const userData = partsData.find(p => { return p.name === part.name; });
+                                const partData = { ...part, ...userData || {} };
+
                                 let cutColor = this.props.theme.defaultCutColor;
                                 if (part.selected) {
                                     cutColor = this.props.theme.selectedCutColor;
                                 }
-                                if (part.disabled) {
+                                if (partData.disabled) {
                                     cutColor = this.props.theme.disabledCutColor;
                                 }
-                                return (<Cut key={index} 
-                                            path={part.path} 
-                                            title={part.name} 
+
+                                return (<Cut key={index}
+                                            path={partData.path} 
+                                            title={partData.name} 
                                             fill={cutColor}
                                             textColor={this.props.theme.textColor}
                                             strokeColor={this.props.theme.strokeColor}
-                                            disabled={part.disabled}
-                                            placeholders={part.placeholders}
-                                            price={part.price}
+                                            disabled={partData.disabled}
+                                            placeholders={partData.placeholders}
                                             onHover={this.handleHover}/>);
                             })
                         }
-                        <text x="3000" y="-3100" 
+                        <text x="3000" y="-3150" 
                                 transform="translate(0.000000,413.000000) scale(1,-1)" 
                                 fill={this.props.theme.textColor} 
                                 fontSize="132" 
-                                strokeWidth="0">{this.state.hoveredPart && this.state.hoveredPart.name && this.state.hoveredPart.name.toUpperCase()}</text>
+                                strokeWidth="0"
+                                textAnchor="middle">{hoveredPartName}</text>
+                        <text x="3000" y="-2950" 
+                                transform="translate(0.000000,413.000000) scale(1,-1)" 
+                                fill={this.props.theme.textColor} 
+                                fontSize="192" 
+                                textAnchor="middle"
+                                strokeWidth="0">{hoveredPartUserText}</text>
                     </g>
                 </svg>
             </div>
         );
     }
+}
+
+CutSheet.propTypes = {
+    cutSheetType: PropTypes.string.isRequired,
+    theme: PropTypes.object,
+    partsData: PropTypes.array
 }

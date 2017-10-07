@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import CutSheet from '../CutSheet';
+import CutSheet from '../components/CutSheet';
 
 class CutSheetContainer extends Component {
     render() {
