@@ -1,19 +1,34 @@
-import React, { Component } from 'react'
+import React from "react";
 
-class CutSheetSelector extends Component {
-    render() {
-        return (
-            <div>
-                {['beef', 'pork', 'lamb', 'chicken'].map((meatType, index) => {
-                    return (
-                        <button key={meatType} className="tbd"
-                            value={meatType}
-                            onClick={(e) => this.props.onCutSheetSelected(e.target.value)}>{meatType}</button>
-                    );
-                })}
-            </div>
-        );
-    }
-}
+const MeatSelectorBtn = ({ meatType, onCutSheetSelected }) => {
+  return (
+    <button
+      key={meatType}
+      className="tbd"
+      value={meatType}
+      onClick={e => onCutSheetSelected(e.target.value)}
+    >
+      {meatType}
+    </button>
+  );
+};
+
+const CutSheetSelector = ({ parts, onCutSheetSelected }) => {
+  if (!parts) {
+    return null;
+  }
+  if (!parts.length) {
+    return <div>No Parts Available</div>;
+  }
+  return (
+    <div>
+      {parts.map((meatType, index) => (
+        <MeatSelectorBtn
+          {...{ meatType, onCutSheetSelected }}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default CutSheetSelector;

@@ -16,7 +16,7 @@ class CutSheetSelectorContainer extends Component {
 
     render() {
         return (
-            <CutSheetSelector onCutSheetSelected={this.handleCutSheetSelected} selectedCutSheetType={this.props.selectedCutSheetType} />
+            <CutSheetSelector parts={['beef','lamb']} onCutSheetSelected={this.handleCutSheetSelected} selectedCutSheetType={this.props.selectedCutSheetType} />
         );
     }
 }
